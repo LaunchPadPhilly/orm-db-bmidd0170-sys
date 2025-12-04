@@ -29,104 +29,101 @@ export default function Projects() {
   }, []);
 
   return (
-    <div className="min-h-screen p-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-4">
-          <h1 className="text-5xl font-bold">My Projects</h1>
+    <div className="py-20 px-6">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            My Projects
+          </h1>
+          <p className="text-base text-slate-400">A collection of my work showcasing various technologies and solutions</p>
         </div>
 
         {loading ? (
-          <div className="text-center py-12">
-            <h2 className="text-2xl font-bold mb-4">Loading projects...</h2>
+          <div className="text-center py-20">
+            <div className="inline-block animate-spin rounded-full h-16 w-16 border-4 border-cyan-500 border-t-transparent mb-4"></div>
+            <h2 className="text-2xl font-semibold text-slate-300">Loading projects...</h2>
           </div>
         ) : error ? (
-          <div className="text-center py-12">
-            <h2 className="text-2xl font-bold mb-4 text-red-600">Error loading projects</h2>
-            <p className="text-gray-600 mb-6">{error}</p>
+          <div className="text-center py-20">
+            <div className="max-w-md mx-auto bg-slate-800/30 border border-red-500/30 rounded-xl p-8 backdrop-blur-sm">
+              <div className="text-5xl mb-4">⚠️</div>
+              <h2 className="text-2xl font-bold text-red-400 mb-2">Error loading projects</h2>
+              <p className="text-slate-400">{error}</p>
+            </div>
           </div>
         ) : projects.length > 0 ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+          <>
+            <div className="space-y-6 mb-16">
             {projects.map((project) => (
-              <div key={project.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div className="h-48 bg-gradient-to-r from-blue-400 to-blue-600 flex items-center justify-center">
-                  {project.imageUrl ? (
-                    <Image
-                      src={project.imageUrl}
-                      alt={project.title}
-                      width={400}
-                      height={200}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <p className="text-white font-bold text-xl">No Image</p>
-                  )}
-                </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
-                  <p className="text-gray-600 mb-4 line-clamp-3">{project.description}</p>
-                  <div className="flex gap-2 mb-4 flex-wrap">
-                    {project.technologies?.slice(0, 3).map((tech, index) => (
-                      <span key={index} className="text-sm bg-gray-200 px-3 py-1 rounded">
-                        {tech}
-                      </span>
-                    ))}
-                    {project.technologies?.length > 3 && (
-                      <span className="text-sm text-gray-500 px-3 py-1">
-                        +{project.technologies.length - 3} more
-                      </span>
-                    )}
+              <div key={project.id} className="bg-indigo-900/30 border border-purple-500/30 rounded-xl p-6 hover:border-purple-500/50 transition-colors">
+                <Link href={`/projects/${project.id}`} className="block">
+                  <div className="flex items-start gap-4">
+                    <div className="text-3xl">🚀</div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold text-white mb-2 hover:text-purple-400 transition-colors">
+                        {project.title}
+                      </h3>
+                      <p className="text-slate-300 text-sm mb-3 leading-relaxed">{project.description}</p>
+                    </div>
                   </div>
-                  <div className="flex gap-2">
-                    <Link
-                      href={`/projects/${project.id}`}
-                      className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
+                </Link>
+                {project.projectUrl && (
+                  <div className="mt-4">
+                    <a
+                      href={project.projectUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block px-6 py-2 bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-lg text-sm font-medium hover:from-purple-400 hover:to-indigo-500 transition-all"
                     >
-                      View Details
-                    </Link>
-                    {project.projectUrl && (
-                      <a
-                        href={project.projectUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300 transition-colors"
-                      >
-                        Live Demo
-                      </a>
-                    )}
+                      To Website
+                    </a>
                   </div>
-                </div>
+                )}
               </div>
             ))}
           </div>
-        ) : (
-          <div className="text-center py-12">
-            <div className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">No projects yet</h2>
-              <p className="text-gray-600 mb-6">
-                Get started by setting up your database and implementing the API routes!
-              </p>
+
+          {/* Stats Section */}
+          <div className="bg-slate-800/30 rounded-2xl p-8 border border-cyan-500/20 backdrop-blur-sm">
+            <div className="grid md:grid-cols-3 gap-6 text-center">
+              <div>
+                <div className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">{projects.length}</div>
+                <div className="text-slate-400">Total Projects</div>
+              </div>
+              <div>
+                <div className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent mb-2">
+                  {new Set(projects.flatMap(p => p.technologies || [])).size}
+                </div>
+                <div className="text-slate-400">Technologies Used</div>
+              </div>
+              <div>
+                <div className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent mb-2">100%</div>
+                <div className="text-slate-400">Dedication</div>
+              </div>
             </div>
-            <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-6 max-w-md mx-auto">
-              <h3 className="font-bold text-blue-900 mb-2">🚀 Getting Started:</h3>
-              <ol className="text-blue-800 space-y-1 list-decimal list-inside text-left">
-                <li>Set up your Neon database</li>
-                <li>Implement the API routes</li>
-                <li>Add project creation functionality</li>
-                <li>Convert this page to use database data</li>
-              </ol>
+          </div>
+        </>
+        ) : (
+          <div className="text-center py-20">
+            <div className="max-w-2xl mx-auto">
+              <div className="text-7xl mb-6">🚀</div>
+              <h2 className="text-3xl font-bold text-white mb-4">No projects yet</h2>
+              <p className="text-base text-slate-400 mb-8">
+                This is where your amazing work will be displayed. Add your first project to get started!
+              </p>
+              <div className="bg-indigo-900/30 border border-purple-500/30 rounded-xl p-8 max-w-xl mx-auto">
+                <h3 className="font-bold text-white mb-4 text-lg">📚 Quick Start Guide:</h3>
+                <ol className="text-left text-slate-300 text-sm space-y-2 list-decimal list-inside">
+                  <li>Set up your Neon database</li>
+                  <li>Implement the API routes</li>
+                  <li>Add project creation functionality</li>
+                  <li>Watch your portfolio come to life!</li>
+                </ol>
+              </div>
             </div>
           </div>
         )}
-
-        <div className="bg-yellow-50 border-2 border-yellow-200 rounded-lg p-6">
-          <h3 className="font-bold text-yellow-900 mb-2">💡 Project Ideas:</h3>
-          <ul className="text-yellow-800 space-y-1">
-            <li>• Past school projects</li>
-            <li>• Personal coding projects</li>
-            <li>• Design work or creative projects</li>
-            <li>• Future projects you want to build (coming soon!)</li>
-          </ul>
-        </div>
       </div>
     </div>
   );

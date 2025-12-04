@@ -29,12 +29,12 @@ export default async function ProjectDetail({ params }) {
 
   if (!project) {
     return (
-      <div className="min-h-screen p-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl font-bold mb-8">Project Not Implemented</h1>
-          <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-8 max-w-md mx-auto">
-            <h2 className="font-bold text-blue-900 mb-4">🚀 To view project details:</h2>
-            <ol className="text-blue-800 space-y-2 list-decimal list-inside text-left">
+      <div className="min-h-screen p-8 px-6">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-4xl font-bold text-white mb-8">Project Not Implemented</h1>
+          <div className="bg-slate-800/30 border border-cyan-500/20 rounded-xl p-8 max-w-md backdrop-blur-sm">
+            <h2 className="font-bold text-white mb-4">🚀 To view project details:</h2>
+            <ol className="text-slate-300 space-y-2 list-decimal list-inside text-left text-sm">
               <li>Implement the GET /api/projects/[id] endpoint</li>
               <li>Create and seed your database with projects</li>
               <li>Update this page to fetch from the API</li>
@@ -42,7 +42,7 @@ export default async function ProjectDetail({ params }) {
           </div>
           <Link 
             href="/projects" 
-            className="inline-block mt-8 bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition-colors"
+            className="inline-block mt-8 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-3 rounded-full hover:from-cyan-400 hover:to-blue-500 transition-all font-medium shadow-lg shadow-cyan-500/25"
           >
             ← Back to Projects
           </Link>
@@ -53,22 +53,22 @@ export default async function ProjectDetail({ params }) {
 
   // This code will run once students implement the API
   return (
-    <div className="min-h-screen p-8">
+    <div className="min-h-screen py-20 px-6">
       <div className="max-w-4xl mx-auto">
         {/* Back button */}
         <Link 
           href="/projects" 
-          className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-8"
+          className="inline-flex items-center text-slate-400 hover:text-cyan-400 mb-8 transition-colors"
         >
           ← Back to Projects
         </Link>
 
         {/* Project header */}
-        <div className="mb-8">
-          <h1 className="text-5xl font-bold mb-4">{project.title}</h1>
-          <div className="flex gap-2 mb-6">
+        <div className="mb-12">
+          <h1 className="text-5xl font-bold text-white mb-6">{project.title}</h1>
+          <div className="flex gap-2 mb-6 flex-wrap">
             {project.technologies.map((tech, index) => (
-              <span key={index} className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full">
+              <span key={index} className="bg-cyan-500/10 text-cyan-400 px-4 py-2 rounded border border-cyan-500/30 text-sm">
                 {tech}
               </span>
             ))}
@@ -77,13 +77,13 @@ export default async function ProjectDetail({ params }) {
 
         {/* Project image */}
         {project.imageUrl && (
-          <div className="mb-8">
+          <div className="mb-12">
             <Image
               src={project.imageUrl}
               alt={project.title}
               width={800}
               height={400}
-              className="w-full rounded-lg shadow-lg"
+              className="w-full rounded-xl border border-cyan-500/20"
             />
           </div>
         )}
@@ -92,15 +92,15 @@ export default async function ProjectDetail({ params }) {
         <div className="grid md:grid-cols-3 gap-8">
           {/* Main content */}
           <div className="md:col-span-2">
-            <h2 className="text-3xl font-bold mb-4">About This Project</h2>
-            <p className="text-lg text-gray-700 leading-relaxed mb-6">
+            <h2 className="text-3xl font-bold text-white mb-4">About This Project</h2>
+            <p className="text-lg text-slate-300 leading-relaxed mb-6">
               {project.description}
             </p>
 
             {/* Additional sections students can add */}
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-xl font-bold mb-3">Technical Details</h3>
-              <p className="text-gray-700">
+            <div className="bg-slate-800/30 rounded-xl p-6 border border-cyan-500/20 backdrop-blur-sm">
+              <h3 className="text-xl font-bold text-white mb-3">Technical Details</h3>
+              <p className="text-slate-300">
                 Add more details about your project implementation, challenges you faced, 
                 and what you learned while building it.
               </p>
@@ -110,15 +110,15 @@ export default async function ProjectDetail({ params }) {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Project links */}
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <h3 className="text-xl font-bold mb-4">Project Links</h3>
+            <div className="bg-slate-800/30 rounded-xl border border-cyan-500/20 p-6 backdrop-blur-sm">
+              <h3 className="text-xl font-bold text-white mb-4">Project Links</h3>
               <div className="space-y-3">
                 {project.projectUrl && (
                   <a
                     href={project.projectUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-full bg-green-600 text-white text-center px-4 py-3 rounded hover:bg-green-700 transition-colors"
+                    className="block w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-center px-4 py-3 rounded-full hover:from-cyan-400 hover:to-blue-500 transition-all font-medium shadow-lg shadow-cyan-500/25"
                   >
                     View Live Project
                   </a>
@@ -128,7 +128,7 @@ export default async function ProjectDetail({ params }) {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-full bg-gray-800 text-white text-center px-4 py-3 rounded hover:bg-gray-900 transition-colors"
+                    className="block w-full bg-slate-700/50 text-white text-center px-4 py-3 rounded-full hover:bg-slate-700 transition-colors font-medium border border-cyan-500/30"
                   >
                     View on GitHub
                   </a>
@@ -137,11 +137,11 @@ export default async function ProjectDetail({ params }) {
             </div>
 
             {/* Project info */}
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <h3 className="text-xl font-bold mb-4">Project Info</h3>
-              <div className="space-y-2 text-sm text-gray-600">
-                <p><strong>Created:</strong> {new Date(project.createdAt).toLocaleDateString()}</p>
-                <p><strong>Last Updated:</strong> {new Date(project.updatedAt).toLocaleDateString()}</p>
+            <div className="bg-slate-800/30 rounded-xl border border-cyan-500/20 p-6 backdrop-blur-sm">
+              <h3 className="text-xl font-bold text-white mb-4">Project Info</h3>
+              <div className="space-y-2 text-sm text-slate-300">
+                <p><strong className="text-white">Created:</strong> {new Date(project.createdAt).toLocaleDateString()}</p>
+                <p><strong className="text-white">Last Updated:</strong> {new Date(project.updatedAt).toLocaleDateString()}</p>
               </div>
             </div>
           </div>
