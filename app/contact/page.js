@@ -9,7 +9,7 @@ export default function Contact() {
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
             Get In Touch
           </h1>
-          <p className="text-xl text-slate-300 max-w-2xl">Let's connect and create something amazing together</p>
+          <p className="text-xl text-slate-300 max-w-2xl">Let&apos;s connect and create something amazing together</p>
         </div>
 
         {/* Contact Cards */}
@@ -31,7 +31,7 @@ export default function Contact() {
             </div>
             <h3 className="text-lg font-bold text-white mb-2">LinkedIn</h3>
             <p className="text-indigo-400 font-medium mb-2 text-sm">linkedin.com/in/yourname</p>
-            <p className="text-sm text-slate-400">Let's connect professionally</p>
+            <p className="text-sm text-slate-400">Let&apos;s connect professionally</p>
           </a>
 
           {/* GitHub Card */}
@@ -53,21 +53,21 @@ export default function Contact() {
               <div className="text-2xl">🚀</div>
               <div>
                 <h3 className="font-semibold text-white mb-2">Project Collaboration</h3>
-                <p className="text-slate-300 text-sm">Have an exciting project? Let's discuss how we can work together.</p>
+                <p className="text-slate-300 text-sm">Have an exciting project? Let&apos;s discuss how we can work together.</p>
               </div>
             </div>
             <div className="flex gap-4">
               <div className="text-2xl">💼</div>
               <div>
                 <h3 className="font-semibold text-white mb-2">Job Opportunities</h3>
-                <p className="text-slate-300 text-sm">Looking for talent? I'm open to new opportunities and challenges.</p>
+                <p className="text-slate-300 text-sm">Looking for talent? I&apos;m open to new opportunities and challenges.</p>
               </div>
             </div>
             <div className="flex gap-4">
               <div className="text-2xl">💡</div>
               <div>
                 <h3 className="font-semibold text-white mb-2">Just Say Hi</h3>
-                <p className="text-slate-300 text-sm">Want to connect or chat about tech? I'd love to hear from you.</p>
+                <p className="text-slate-300 text-sm">Want to connect or chat about tech? I&apos;d love to hear from you.</p>
               </div>
             </div>
             <div className="flex gap-4">

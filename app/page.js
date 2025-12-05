@@ -44,16 +44,16 @@ export default function Home() {
           {/* Hero Text */}
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-              Hi, I'm <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Your Name</span>
+              Hi, I&apos;m <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Your Name</span>
             </h1>
             <p className="text-base md:text-lg text-slate-300 leading-relaxed mb-3">
-              I'm a passionate Full-Stack Developer focused on creating modern, user-friendly web applications with clean code and innovative solutions.
+              I&apos;m a passionate Full-Stack Developer focused on creating modern, user-friendly web applications with clean code and innovative solutions.
             </p>
             <p className="text-base md:text-lg text-slate-300 leading-relaxed mb-3">
               What drives me is the challenge of turning ideas into functional, beautiful web applications. I specialize in developing projects using HTML, CSS, JavaScript, React, and Next.js, while applying best practices in version control, agile methodologies, and problem-solving strategies.
             </p>
             <p className="text-base md:text-lg text-slate-300 leading-relaxed">
-              I'm continuously learning and refining my craft to write maintainable, scalable solutions that make a real impact. I'm eager to collaborate with teams and contribute to projects that push the boundaries of what's possible.
+              I&apos;m continuously learning and refining my craft to write maintainable, scalable solutions that make a real impact. I&apos;m eager to collaborate with teams and contribute to projects that push the boundaries of what&apos;s possible.
             </p>
           </div>
         </section>
@@ -111,7 +111,7 @@ export default function Home() {
         <section className="rounded-2xl bg-white/5 backdrop-blur-lg border border-purple-500/20 shadow-xl p-8">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Get In Touch</h2>
           <p className="text-base text-slate-300 mb-6">
-            I'm always open to discussing new opportunities, collaborations, or just connecting!
+            I&apos;m always open to discussing new opportunities, collaborations, or just connecting!
           </p>
           <div className="flex flex-wrap gap-4">
             <a

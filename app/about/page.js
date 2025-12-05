@@ -22,13 +22,13 @@ export default function About() {
 
             {/* Bio */}
             <div className="md:col-span-2 space-y-6">
-              <h2 className="text-3xl font-bold text-white">Hi, I'm Brayden</h2>
+              <h2 className="text-3xl font-bold text-white">Hi, I&apos;m Brayden</h2>
               <p className="text-lg text-slate-300 leading-relaxed">
-                I'm a passionate software engineer dedicated to building elegant solutions to complex problems.
+                I&apos;m a passionate software engineer dedicated to building elegant solutions to complex problems.
                 With expertise in modern web technologies, I create applications that are not only functional but also intuitive and beautiful.
               </p>
               <p className="text-lg text-slate-300 leading-relaxed">
-                I thrive on learning new technologies and continuously improving my craft. Whether it's building scalable backends
+                I thrive on learning new technologies and continuously improving my craft. Whether it&apos;s building scalable backends
                 or pixel-perfect frontends, I bring creativity and technical excellence to every project.
               </p>
             </div>
@@ -91,8 +91,8 @@ export default function About() {
 
         {/* CTA */}
         <div className="text-center bg-slate-800/30 rounded-2xl p-12 border border-cyan-500/20 backdrop-blur-sm">
-          <h2 className="text-3xl font-bold text-white mb-4">Let's Work Together</h2>
-          <p className="text-xl mb-8 text-slate-300">I'm always open to discussing new projects and opportunities</p>
+          <h2 className="text-3xl font-bold text-white mb-4">Let&apos;s Work Together</h2>
+          <p className="text-xl mb-8 text-slate-300">I&apos;m always open to discussing new projects and opportunities</p>
           <a href="/contact" className="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-4 rounded-full font-semibold hover:from-cyan-400 hover:to-blue-500 transition-all shadow-xl shadow-cyan-500/30">
             Get In Touch
           </a>
