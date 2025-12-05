@@ -41,7 +41,7 @@ export async function PUT(request, { params }) {
     }
     const body = await request.json();
     const { title, description, imageUrl, projectUrl, githubUrl, technologies } = body;
-    
+
     const project = await prisma.project.update({
       where: { id },
       data: {

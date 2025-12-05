@@ -8,6 +8,7 @@ export async function GET() {
     const projects = await prisma.project.findMany({
       orderBy: { createdAt: 'desc' }
     });
+    console.log('DEBUG: Projects returned from DB:', projects);
     // Always return 200, even if empty
     return NextResponse.json(projects, { status: 200 });
   } catch (error) {

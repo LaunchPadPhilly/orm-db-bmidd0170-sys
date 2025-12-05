@@ -11,7 +11,7 @@ export default async function ProjectDetail({ params }) {
   // 2. Handle 404 responses by calling notFound()
   // 3. Parse the JSON response
   // 4. Display the project details
-  
+
   // Example implementation (students should write this):
   // const response = await fetch(`http://localhost:3000/api/projects/${id}`);
   // 
@@ -40,8 +40,8 @@ export default async function ProjectDetail({ params }) {
               <li>Update this page to fetch from the API</li>
             </ol>
           </div>
-          <Link 
-            href="/projects" 
+          <Link
+            href="/projects"
             className="inline-block mt-8 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-3 rounded-full hover:from-cyan-400 hover:to-blue-500 transition-all font-medium shadow-lg shadow-cyan-500/25"
           >
             ← Back to Projects
@@ -56,8 +56,8 @@ export default async function ProjectDetail({ params }) {
     <div className="min-h-screen py-20 px-6">
       <div className="max-w-4xl mx-auto">
         {/* Back button */}
-        <Link 
-          href="/projects" 
+        <Link
+          href="/projects"
           className="inline-flex items-center text-slate-400 hover:text-cyan-400 mb-8 transition-colors"
         >
           ← Back to Projects
@@ -101,7 +101,7 @@ export default async function ProjectDetail({ params }) {
             <div className="bg-slate-800/30 rounded-xl p-6 border border-cyan-500/20 backdrop-blur-sm">
               <h3 className="text-xl font-bold text-white mb-3">Technical Details</h3>
               <p className="text-slate-300">
-                Add more details about your project implementation, challenges you faced, 
+                Add more details about your project implementation, challenges you faced,
                 and what you learned while building it.
               </p>
             </div>

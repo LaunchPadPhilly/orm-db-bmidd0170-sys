@@ -36,7 +36,13 @@ import { useState } from "react";
 import TechnologyInput from "./TechnologyInput";
 
 const urlRegex = /^https?:\/\/.+\..+/;
-
+// Error message constants for test compatibility
+const ERRORS = {
+  title: 'Title is required',
+  description: 'Description is required',
+  technologies: 'At least one technology is required',
+  url: 'Please enter a valid URL',
+};
 export default function ProjectForm({ onSubmit, onCancel, isOpen }) {
   const [form, setForm] = useState({
     title: "",
@@ -53,13 +59,13 @@ export default function ProjectForm({ onSubmit, onCancel, isOpen }) {
 
   const validate = () => {
     const newErrors = {};
-    if (!form.title.trim()) newErrors.title = "Title is required.";
-    if (!form.description.trim()) newErrors.description = "Description is required.";
+    if (!form.title.trim()) newErrors.title = ERRORS.title;
+    if (!form.description.trim()) newErrors.description = ERRORS.description;
     if (!form.technologies || form.technologies.length === 0)
-      newErrors.technologies = "At least one technology is required.";
+      newErrors.technologies = ERRORS.technologies;
     ["imageUrl", "projectUrl", "githubUrl"].forEach((key) => {
       if (form[key] && !urlRegex.test(form[key])) {
-        newErrors[key] = "Invalid URL format.";
+        newErrors[key] = ERRORS.url;
       }
     });
     return newErrors;
@@ -112,88 +118,104 @@ export default function ProjectForm({ onSubmit, onCancel, isOpen }) {
   };
 
   return (
-    <form className="bg-white p-6 rounded-lg shadow-md space-y-4" onSubmit={handleSubmit}>
-      <h2 className="text-2xl font-bold mb-2">Add New Project</h2>
-      {errors.submit && <div className="text-red-500 mb-2">{errors.submit}</div>}
+    <form className="bg-gradient-to-br from-indigo-950 via-indigo-900 to-purple-900 border border-purple-500/30 rounded-2xl shadow-2xl p-8 space-y-6 backdrop-blur-lg" onSubmit={handleSubmit} autoComplete="off">
+      <h2 className="text-3xl md:text-4xl font-extrabold mb-2 text-white tracking-tight drop-shadow-lg">Add New Project</h2>
+      {errors.submit && <div className="text-red-400 mb-2 text-sm font-medium">{errors.submit}</div>}
       <div>
-        <label className="block font-semibold">Title *</label>
+        <label className="block font-semibold text-slate-200 mb-1" htmlFor="project-title">Project Title</label>
         <input
+          id="project-title"
           name="title"
           value={form.title}
           onChange={handleChange}
-          className="w-full border rounded px-3 py-2 mt-1"
+          className={`w-full bg-white/10 border border-purple-500/20 rounded-lg px-3 py-2 mt-1 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition ${errors.title ? 'border-red-500 ring-red-200' : ''}`}
           disabled={loading}
+          aria-label="Project Title"
         />
-        {errors.title && <div className="text-red-500 text-sm">{errors.title}</div>}
+        {errors.title && <div className="text-red-400 text-xs mt-1">{errors.title}</div>}
       </div>
       <div>
-        <label className="block font-semibold">Description *</label>
+        <label className="block font-semibold text-slate-200 mb-1" htmlFor="project-description">Description</label>
         <textarea
+          id="project-description"
           name="description"
           value={form.description}
           onChange={handleChange}
-          className="w-full border rounded px-3 py-2 mt-1"
+          className={`w-full bg-white/10 border border-purple-500/20 rounded-lg px-3 py-2 mt-1 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition ${errors.description ? 'border-red-500 ring-red-200' : ''}`}
           disabled={loading}
+          aria-label="Description"
         />
-        {errors.description && <div className="text-red-500 text-sm">{errors.description}</div>}
+        {errors.description && <div className="text-red-400 text-xs mt-1">{errors.description}</div>}
       </div>
       <div>
-        <label className="block font-semibold">Technologies *</label>
+        <label className="block font-semibold text-slate-200 mb-1">Technologies</label>
         <TechnologyInput
           value={form.technologies}
           onChange={handleTechChange}
+          error={errors.technologies}
           disabled={loading}
         />
-        {errors.technologies && <div className="text-red-500 text-sm">{errors.technologies}</div>}
+        {errors.technologies && <div className="text-red-400 text-xs mt-1">{errors.technologies}</div>}
       </div>
       <div>
-        <label className="block font-semibold">Image URL</label>
+        <label className="block font-semibold text-slate-200 mb-1" htmlFor="image-url">Image URL</label>
         <input
+          id="image-url"
           name="imageUrl"
           value={form.imageUrl}
           onChange={handleChange}
-          className="w-full border rounded px-3 py-2 mt-1"
+          className="w-full bg-white/10 border border-purple-500/20 rounded-lg px-3 py-2 mt-1 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"
           disabled={loading}
         />
-        {errors.imageUrl && <div className="text-red-500 text-sm">{errors.imageUrl}</div>}
+        {errors.imageUrl && <div className="text-red-400 text-xs mt-1">{errors.imageUrl}</div>}
       </div>
       <div>
-        <label className="block font-semibold">Live Demo URL</label>
+        <label className="block font-semibold text-slate-200 mb-1" htmlFor="project-url">Live Demo URL</label>
         <input
+          id="project-url"
           name="projectUrl"
           value={form.projectUrl}
           onChange={handleChange}
-          className="w-full border rounded px-3 py-2 mt-1"
+          className="w-full bg-white/10 border border-purple-500/20 rounded-lg px-3 py-2 mt-1 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"
           disabled={loading}
         />
-        {errors.projectUrl && <div className="text-red-500 text-sm">{errors.projectUrl}</div>}
+        {errors.projectUrl && <div className="text-red-400 text-xs mt-1">{errors.projectUrl}</div>}
       </div>
       <div>
-        <label className="block font-semibold">GitHub URL</label>
+        <label className="block font-semibold text-slate-200 mb-1" htmlFor="github-url">GitHub URL</label>
         <input
+          id="github-url"
           name="githubUrl"
           value={form.githubUrl}
           onChange={handleChange}
-          className="w-full border rounded px-3 py-2 mt-1"
+          className="w-full bg-white/10 border border-purple-500/20 rounded-lg px-3 py-2 mt-1 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"
           disabled={loading}
         />
-        {errors.githubUrl && <div className="text-red-500 text-sm">{errors.githubUrl}</div>}
+        {errors.githubUrl && <div className="text-red-400 text-xs mt-1">{errors.githubUrl}</div>}
       </div>
-      <div className="flex gap-4 mt-4">
+      <div className="flex gap-4 mt-6">
         <button
           type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50"
+          className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white px-6 py-2 rounded-lg shadow-lg font-semibold text-base hover:from-purple-400 hover:to-indigo-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 disabled:opacity-50 transition-all"
           disabled={loading}
         >
-          {loading ? "Creating..." : "Create Project"}
+          {loading ? "Creating Project..." : "Create Project"}
         </button>
         <button
           type="button"
-          className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400"
+          className="bg-white/10 text-slate-200 px-6 py-2 rounded-lg shadow font-semibold text-base hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-cyan-400 disabled:opacity-50 transition-all mr-2"
           onClick={handleCancel}
           disabled={loading}
         >
           Cancel
+        </button>
+        <button
+          type="button"
+          className="bg-white/10 text-slate-200 px-6 py-2 rounded-lg shadow font-semibold text-base hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-cyan-400 disabled:opacity-50 transition-all"
+          onClick={() => setForm({ title: '', description: '', imageUrl: '', projectUrl: '', githubUrl: '', technologies: [] })}
+          disabled={loading}
+        >
+          Reset
         </button>
       </div>
     </form>

@@ -19,16 +19,16 @@ export default function About() {
                 <span className="text-6xl text-white font-bold">B</span>
               </div>
             </div>
-            
+
             {/* Bio */}
             <div className="md:col-span-2 space-y-6">
               <h2 className="text-3xl font-bold text-white">Hi, I'm Brayden</h2>
               <p className="text-lg text-slate-300 leading-relaxed">
-                I'm a passionate software engineer dedicated to building elegant solutions to complex problems. 
+                I'm a passionate software engineer dedicated to building elegant solutions to complex problems.
                 With expertise in modern web technologies, I create applications that are not only functional but also intuitive and beautiful.
               </p>
               <p className="text-lg text-slate-300 leading-relaxed">
-                I thrive on learning new technologies and continuously improving my craft. Whether it's building scalable backends 
+                I thrive on learning new technologies and continuously improving my craft. Whether it's building scalable backends
                 or pixel-perfect frontends, I bring creativity and technical excellence to every project.
               </p>
             </div>
@@ -54,7 +54,7 @@ export default function About() {
         {/* Skills Section */}
         <div className="bg-slate-800/30 rounded-2xl p-8 md:p-12 mb-16 border border-cyan-500/20 backdrop-blur-sm">
           <h2 className="text-3xl font-bold text-white mb-8">Skills & Technologies</h2>
-          
+
           <div className="space-y-8">
             <div>
               <h3 className="text-sm font-semibold text-slate-400 mb-4 uppercase tracking-wider">Frontend</h3>
